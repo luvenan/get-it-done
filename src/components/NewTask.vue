@@ -1,7 +1,9 @@
 <template>
   <form @submit.prevent="handleSubmit">
-      <input type="text" placeholder="New Task" v-model="newTask" required>
-      <button><Icon icon="ic:round-plus" /></button>
+    <div class="container-newtask">
+        <input class="newtask-input" type="text" placeholder="Add a new task..." v-model="newTask" required>
+        <button id="add-task"><Icon icon="ic:round-plus" /></button>    
+    </div>
   </form>
 </template>
 
@@ -38,6 +40,21 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.container-newtask {
+    display: flex;
+    justify-content: space-between;
+}
 
+.newtask-input {
+    width: 392px;
+    margin-right: 3px;
+    font-size: 16px;
+    border: none;
+}
+
+#add-task{
+    scale: 140%;
+    line-height: 25px;
+}
 </style>

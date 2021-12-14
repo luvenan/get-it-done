@@ -2,10 +2,17 @@
   <div class="container2">
       <h2>Done</h2>
       <div class="container-tasks done" v-for="task in tasks" :key="task.id">
-         {{task.title}} 
-         <button @click="handleMove(task, 'ToDo')"><Icon icon="ic:outline-format-list-bulleted" /></button>
-         <button @click="handleMove(task, 'Standby')"><Icon icon="ic:outline-watch-later" /></button>
-         <button @click="handleDelete(task)"><Icon icon="mdi:trash-can-outline" /></button>
+        <div class="container-check-task">
+             <button @click="handleMove(task, 'ToDo')"><Icon icon="ic:round-done" /></button>
+            {{task.title}}
+        </div>
+        <div class="container-buttons">
+            <button @click="handleEdit"><Icon icon="mdi:pencil-outline" /></button>
+            <button @click="handleMove(task, 'ToDo')"><Icon icon="ic:outline-format-list-bulleted" /></button>
+            <button @click="handleMove(task, 'Standby')"><Icon icon="ic:outline-watch-later" /></button>
+            <button @click="handleDelete(task)"><Icon icon="mdi:trash-can-outline" /></button>
+        </div> 
+         
      </div>
   </div>
   
@@ -39,6 +46,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+button {
+    opacity: 0.5;
+}
 
 </style>

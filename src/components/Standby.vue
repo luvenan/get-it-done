@@ -5,10 +5,16 @@
             <NewTask v-bind:c="col"/>
         </div>      
         <div class="container-tasks" v-for="task in tasks" :key="task.id">
-            {{ task.title }}
-            <button @click="handleMove(task, 'Done')"><Icon icon="ic:round-done" /></button>
-            <button @click="handleMove(task, 'ToDo')"><Icon icon="ic:outline-format-list-bulleted" /></button>
-            <button @click="handleDelete(task)"><Icon icon="mdi:trash-can-outline" /></button>
+            <div class="container-check-task">
+                <button @click="handleMove(task, 'Done')"><Icon icon="ic:round-done" /></button>
+                {{ task.title }}                
+            </div>
+            <div class="container-buttons">
+                <button @click="handleEdit"><Icon icon="mdi:pencil-outline" /></button>
+                <button @click="handleMove(task, 'ToDo')"><Icon icon="ic:outline-format-list-bulleted" /></button>
+                <button @click="handleDelete(task)"><Icon icon="mdi:trash-can-outline" /></button>
+            </div>
+
         </div>
     </div>
 </template>
