@@ -7,6 +7,7 @@
 
 <script>
 import { ref } from '@vue/reactivity'
+import addTask from '../composables/addTask'
 
 //firebase imports
 import { db } from '../firebase/config'
@@ -16,15 +17,15 @@ export default {
     props: ['c'],
     setup(props) {
         const newTask = ref('')
+        
 
         const handleSubmit = async () => {
-            //This is what I'll need to replace with a property in order to allow it to be added to the different lists
+            //This is how I can add it to different lists
             const colRef = collection (db, props.c)
 
             await addDoc(colRef, {
                 title: newTask.value
             })
-            console.log(props.c)
 
             //reset the form
             newTask.value = ''
