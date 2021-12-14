@@ -1,7 +1,8 @@
 <template>
     <div class="container1">
         <h2>Standby</h2>
-        <div v-for="task in data" :key="task.id">
+        <NewTask v-bind:c="Standby"/>
+        <div v-for="task in tasks" :key="task.id">
             {{ task.title }}
             <button>Done</button>
             <button>To do</button>
@@ -11,24 +12,17 @@
 </template>
 
 <script>
-export default {
-    setup(){
-        const data = [
-            {
-                title: 'Fourth task',
-                id: 4
-            }, 
-            {
-                title: 'Fifth task',
-                id: 5
-            }, 
-            {
-                title: 'Sixth task',
-                id: 6
-            }
-        ]
+import { ref } from '@vue/reactivity'
+import getCollection from '../composables/getCollection'
+import NewTask from './NewTask'
 
-        return { data }
+export default {
+    components: { NewTask },
+    setup(){
+        const { documents: tasks } = getCollection('Standby')
+        const Standby = "Standby"
+
+        return { tasks, Standby }
     }
 }
 </script>

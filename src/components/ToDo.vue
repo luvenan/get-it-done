@@ -1,7 +1,8 @@
 <template>
   <div class="container1">
      <h2>To do</h2>
-     <div v-for="task in data" :key="task.id">
+     <NewTask v-bind:c="ToDo"/>
+     <div v-for="task in tasks" :key="task.id">
         {{task.title}}
         <button>Done</button>
         <button>Standby</button>
@@ -13,27 +14,16 @@
 
 <script>
 import { ref } from '@vue/reactivity'
-
-//firebase imports
-import { db } from '../firebase/config'
-import { collection, getDocs } from 'firebase/firestore'
+import NewTask from './NewTask'
+import getCollection from '../composables/getCollection'
 
 export default {
+    components: { NewTask },
     setup(){
-        const data = ref([])
+        const { documents: tasks } = getCollection('ToDo')
+        const ToDo ="ToDo"
 
-        const colRef = collection(db, 'ToDo')
-
-        getDocs(colRef)
-            .then(snapshot => {
-                let docs = []
-                snapshot.docs.forEach(doc => {
-                    docs.push({...doc.data(), id: doc.id })
-                })
-                data.value = docs
-            })
-
-        return { data }
+        return { tasks, ToDo }
     }
 }
 </script>
