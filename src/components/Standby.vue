@@ -1,12 +1,14 @@
 <template>
     <div class="container1">
         <h2>Standby</h2>
-        <NewTask v-bind:c="col"/>
-        <div v-for="task in tasks" :key="task.id">
+        <div class="container-tasks">
+            <NewTask v-bind:c="col"/>
+        </div>      
+        <div class="container-tasks" v-for="task in tasks" :key="task.id">
             {{ task.title }}
-            <button @click="handleMove(task, 'Done')">Done</button>
-            <button @click="handleMove(task, 'ToDo')">To do</button>
-            <button @click="handleDelete(task)">Delete</button>
+            <button @click="handleMove(task, 'Done')"><Icon icon="ic:round-done" /></button>
+            <button @click="handleMove(task, 'ToDo')"><Icon icon="ic:outline-format-list-bulleted" /></button>
+            <button @click="handleDelete(task)"><Icon icon="mdi:trash-can-outline" /></button>
         </div>
     </div>
 </template>
@@ -16,9 +18,10 @@ import getCollection from '../composables/getCollection'
 import NewTask from './NewTask'
 import deleteTask from '../composables/deleteTask'
 import addTask from '../composables/addTask'
+import { Icon } from '@iconify/vue'
 
 export default {
-    components: { NewTask },
+    components: { NewTask, Icon },
     setup(){
         const { documents: tasks } = getCollection('Standby')
         const col = "Standby"

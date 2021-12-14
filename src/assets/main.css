@@ -1,0 +1,78 @@
+/* 0 - Custom fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@600&family=Roboto&display=swap');
+
+/* 1 - variables*/
+:root {
+    --background: #DEE0E1;
+    --containers: #F3F3F3;
+    --task-box: #cfd7da;
+    --task-text: #515151;
+    --title: #1E1E1E;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: var(--background);
+    width: 1000px;
+    margin: auto;
+}
+
+/*2 - Containers */
+
+.home1 {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+.container1 {
+    width: 490px;
+    background-color: var(--containers);
+    border-radius: 20px;
+    margin: 20px 0;
+    padding: 20px 0;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  }
+  
+.container2 {
+    width: 1000px;
+    background-color: var(--containers);
+    border-radius: 20px;
+    padding: 20px 0;
+    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+  }
+
+.container-tasks {
+    width: 85%;
+    padding: 10px 10px;
+    background: var(--task-box);
+    border-radius: 5px;
+    margin: 10px auto;
+    text-align: left;
+    color: var(--task-text);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.done {
+    width: 93%;
+}
+
+/* 3 - Texts */
+h2 {
+    font-family: 'Atma', cursive;
+    color: var(--title);
+    margin: 10px auto 25px auto;
+}
+
+/* 4 - Buttons and forms */
+button {
+    background: none;
+    border: none;
+    color: var(--task-text);
+    scale: 120%;
+    margin: 0 3px;
+}

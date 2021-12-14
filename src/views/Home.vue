@@ -20,18 +20,7 @@ export default {
 </script>
 
 <style>
-.home1 {
-  display: flex;
-}
 
-.container1 {
-  width: 50%;
-  border: 1px solid black;
-}
 
-.container2 {
-  width: 100%;
-  border: 1px solid black;
-}
 
 </style>

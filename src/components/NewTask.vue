@@ -1,20 +1,21 @@
 <template>
   <form @submit.prevent="handleSubmit">
       <input type="text" placeholder="New Task" v-model="newTask" required>
-      <button>Add</button>
+      <button><Icon icon="ic:round-plus" /></button>
   </form>
 </template>
 
 <script>
 import { ref } from '@vue/reactivity'
-import addTask from '../composables/addTask'
 
 //firebase imports
 import { db } from '../firebase/config'
 import { addDoc, collection } from 'firebase/firestore'
+import { Icon } from '@iconify/vue'
 
 export default {
     props: ['c'],
+    components: { Icon },
     setup(props) {
         const newTask = ref('')
         
