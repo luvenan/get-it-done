@@ -3,14 +3,14 @@
       <h2>Done</h2>
       <div class="container-tasks done" v-for="task in tasks" :key="task.id">
         <div class="container-check-task">
-             <button @click="handleMove(task, 'ToDo')"><Icon icon="ic:round-done" /></button>
+             <button class="icons" @click="handleMove(task, 'ToDo')"><Icon icon="ic:round-done" /></button>
             {{task.title}}
         </div>
         <div class="container-buttons">
-            <button @click="handleEdit"><Icon icon="mdi:pencil-outline" /></button>
-            <button @click="handleMove(task, 'ToDo')"><Icon icon="ic:outline-format-list-bulleted" /></button>
-            <button @click="handleMove(task, 'Standby')"><Icon icon="ic:outline-watch-later" /></button>
-            <button @click="handleDelete(task)"><Icon icon="mdi:trash-can-outline" /></button>
+            <button class="icons" @click="handleEdit"><Icon icon="mdi:pencil-outline" /></button>
+            <button class="icons" @click="handleMove(task, 'ToDo')"><Icon icon="ic:outline-format-list-bulleted" /></button>
+            <button class="icons" @click="handleMove(task, 'Standby')"><Icon icon="ic:outline-watch-later" /></button>
+            <button class="icons" @click="handleDelete(task)"><Icon icon="mdi:trash-can-outline" /></button>
         </div> 
          
      </div>

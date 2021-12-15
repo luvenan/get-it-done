@@ -2,7 +2,7 @@
   <form @submit.prevent="handleSubmit">
     <div class="container-newtask">
         <input class="newtask-input" type="text" placeholder="Add a new task..." v-model="newTask" required>
-        <button id="add-task"><Icon icon="ic:round-plus" /></button>    
+        <button class="icons" id="add-task"><Icon icon="ic:round-plus" /></button>    
     </div>
   </form>
 </template>
