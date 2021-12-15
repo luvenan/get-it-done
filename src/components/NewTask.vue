@@ -9,17 +9,20 @@
 
 <script>
 import { ref } from '@vue/reactivity'
+import getUser from '../composables/getUser'
+import { Icon } from '@iconify/vue'
 
 //firebase imports
 import { db } from '../firebase/config'
 import { addDoc, collection } from 'firebase/firestore'
-import { Icon } from '@iconify/vue'
+
 
 export default {
     props: ['c'],
     components: { Icon },
     setup(props) {
         const newTask = ref('')
+        const { user } = getUser()
         
 
         const handleSubmit = async () => {
@@ -27,14 +30,16 @@ export default {
             const colRef = collection (db, props.c)
 
             await addDoc(colRef, {
-                title: newTask.value
+                title: newTask.value,
+                userUid: user.value.uid,
+                collection: props.c
             })
 
             //reset the form
             newTask.value = ''
         }
 
-        return { newTask, handleSubmit }
+        return { newTask, handleSubmit, user }
     }
     
 }

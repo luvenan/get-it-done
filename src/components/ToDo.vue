@@ -25,12 +25,18 @@ import getCollection from '../composables/getCollection'
 import deleteTask from '../composables/deleteTask'
 import addTask from '../composables/addTask'
 import { Icon } from '@iconify/vue'
+import getUser from '../composables/getUser'
 
 export default {
     components: { NewTask, Icon },
     setup(){
-        const { documents: tasks } = getCollection('ToDo')
+        const { user } = getUser()
         const col ="ToDo"
+        const { documents: tasks } = getCollection(
+            col,
+            ['userUid', '==', user.value.uid ]
+        )
+        
 
         const handleDelete = (task) => {
            deleteTask(task, col)

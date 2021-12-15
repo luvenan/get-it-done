@@ -1,21 +1,40 @@
 <template>
   <div class="navContainer">
-    <router-link class="nav-button" to="/signup" v-if="!isUser">Sign up</router-link>
-    <router-link class="nav-button" to="/login" v-if="!isUser">Log in</router-link>
-    <div class="greeting" v-if="isUser">
-      <p>Hi there, User</p>
+    <router-link class="nav-button" to="/signup" v-if="!user">Sign up</router-link>
+    <router-link class="nav-button" to="/login" v-if="!user">Log in</router-link>
+    <div class="greeting" v-if="user">
+      <p>Logged in as {{ user.email }}</p>
     </div>
-    <button class="nav-button" v-if="isUser">Log out</button>
+    <button class="nav-button" v-if="user" @click="logOut">Log out</button>
   </div>
 
 </template>
 
 <script>
+import getUser from '../composables/getUser'
+import { useRouter } from 'vue-router'
+import { watchEffect } from 'vue'
+
+//firebase imports
+import { auth } from '../firebase/config'
+import { signOut } from 'firebase/auth'
+
 export default {
   setup(){
-   const isUser = false
+   const { user } = getUser()
+   const router = useRouter()
 
-   return { isUser }
+   const logOut = () => {
+     signOut(auth)
+   }
+
+   watchEffect(() => {
+     if(!user.value) {
+       router.push('/login')
+     }
+   })
+
+   return { logOut, user }
   }
 }
 </script>
@@ -38,8 +57,6 @@ export default {
   color: var(--task-text);
   text-decoration: none;
 }
-
-
 
 .greeting {
   padding: 10px 10px;

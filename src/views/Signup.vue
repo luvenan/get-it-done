@@ -2,7 +2,7 @@
     <div class="container1">
         <form @submit.prevent="handleSubmit">
             <h2>Sign up</h2>
-            <div class="container-tasks">
+            <div class="container-tasks" v-if=false>
                 <input type="text" placeholder="Display name" v-model="displayName">
             </div>
             <div class="container-tasks">
@@ -11,9 +11,11 @@
             <div class="container-tasks">
                 <input type="password" placeholder="Password" v-model="password">
             </div>       
-            <div class="error" v-if="error">{{ error }}</div>
+            
             <button class="submit-button" v-if="!isPending">Sign up</button>
             <button class="submit-button" v-if="isPending">Loading</button>
+            <div class="error" v-if="error">{{ error }}</div>
+            
         </form>
     </div>
     
@@ -21,16 +23,31 @@
 
 <script>
 import { ref } from '@vue/reactivity'
+import { useRouter } from 'vue-router'
+import useSignup from '../composables/useSignup'
 
 export default {
     setup(){
     const displayName = ref('')
     const email = ref('')
     const password = ref('')
-    const error = ref(null)
     const isPending = ref(false)
 
-    return { displayName, email, password, error, isPending}
+    const {signup, error } = useSignup()
+    const router = useRouter()
+
+    const handleSubmit = async () => {
+        await signup(email.value, password.value, displayName.value)
+        console.log('user is signed up')
+
+        if(!error.value) {
+            router.push('/')
+        } else {
+            console.log(error)
+        }
+    }
+
+    return { displayName, email, password, error, isPending, handleSubmit}
   }
 }
 </script>

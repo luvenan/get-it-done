@@ -1,9 +1,9 @@
 <template>
   <div class="container2">
       <h2>Done</h2>
-      <div class="container-tasks done" v-for="task in tasks" :key="task.id">
+      <div class="container-tasks done" v-for="task in tasks" :key="task.id" >
         <div class="container-check-task">
-             <button class="icons" @click="handleMove(task, 'ToDo')"><Icon icon="ic:round-done" /></button>
+             <button class="icons" @click="handleMove(task, task.collection)"><Icon icon="ic:round-done" /></button>
             {{task.title}}
         </div>
         <div class="container-buttons">
@@ -23,13 +23,19 @@ import getCollection from '../composables/getCollection'
 import deleteTask from '../composables/deleteTask'
 import addTask from '../composables/addTask'
 import { Icon } from '@iconify/vue'
+import getUser from '../composables/getUser'
 
 export default {
     components: { Icon },
     setup(){
-        const { documents: tasks } = getCollection('Done')
-
         const col = "Done"
+        const { user } = getUser()
+        
+        const { documents: tasks } = getCollection(
+            col,
+            ['userUid', '==', user.value.uid ]
+        )
+
 
         const handleDelete = (task) => {
            deleteTask(task, col)
