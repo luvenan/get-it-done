@@ -9,20 +9,23 @@ const addTask = async (task, targetCol) => {
         await addDoc(colRef, {
             title: task.title,
             collection: 'Standby',
-            userUid: task.userUid
+            userUid: task.userUid,
+            isEditing: false
         })
 
     } else if (task.collection === 'Standby' && targetCol === 'ToDo') {
         await addDoc(colRef, {
             title: task.title,
             collection: 'ToDo',
-            userUid: task.userUid
+            userUid: task.userUid,
+            isEditing: false
         })
     } else {
         await addDoc(colRef, {
             title: task.title,
             collection: task.collection,
-            userUid: task.userUid
+            userUid: task.userUid,
+            isEditing: false
         })
     }
 }

@@ -2,7 +2,7 @@
     <div class="container1">
         <form @submit.prevent="handleSubmit">
             <h2>Sign up</h2>
-            <div class="container-tasks" v-if=false>
+            <div class="container-tasks">
                 <input type="text" placeholder="Display name" v-model="displayName">
             </div>
             <div class="container-tasks">

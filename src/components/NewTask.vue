@@ -1,10 +1,10 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <div class="container-newtask">
+  <div class="container-newtask">
+    <form @submit.prevent="handleSubmit">
         <input class="newtask-input" type="text" placeholder="Add a new task..." v-model="newTask" required>
         <button class="icons" id="add-task"><Icon icon="ic:round-plus" /></button>    
-    </div>
-  </form>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -32,7 +32,8 @@ export default {
             await addDoc(colRef, {
                 title: newTask.value,
                 userUid: user.value.uid,
-                collection: props.c
+                collection: props.c,
+                isEditing: false
             })
 
             //reset the form

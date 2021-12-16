@@ -2,7 +2,7 @@ import { ref } from "vue";
 
 //firebase imports
 import { auth } from '../firebase/config'
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 const error = ref(null)
 const isPending = ref(false)
@@ -17,8 +17,10 @@ const signup = async (email, password, displayName) => {
             throw new Error('Could not complete sign up')
         }
 
-        //This doesn't work on firebase 9, look for what does
-        // await res.user.updateProfile({ displayName })
+        //This updates the profile so that the user has an displayName
+        updateProfile(res.user, {
+            displayName: displayName
+        })
 
         error.value = null
         isPending.value = false
