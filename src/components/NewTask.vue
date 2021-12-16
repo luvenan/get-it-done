@@ -52,12 +52,7 @@ export default {
     justify-content: space-between;
 }
 
-.newtask-input {
-    width: 392px;
-    margin-right: 3px;
-    font-size: 16px;
-    border: none;
-}
+
 
 #add-task{
     scale: 140%;

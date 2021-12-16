@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+//Matches any request into my database
+  match /databases/{database}/documents {
+    //Specific rules for each collection
+    match /ToDo/{taskId} {
+      allow write: if request.auth != null;
+      allow read, delete, update: if request.auth.uid == resource.data.userUid;
+    }
+    match /Standby/{taskId} {
+      allow write: if request.auth != null;
+      allow read, delete, update: if request.auth.uid == resource.data.userUid;
+    }
+    match /Done/{taskId} {
+      allow write: if request.auth != null;
+      allow read, delete, update: if request.auth.uid == resource.data.userUid;
+    }
+  }
+}

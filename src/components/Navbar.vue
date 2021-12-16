@@ -3,7 +3,7 @@
     <router-link class="nav-button" to="/signup" v-if="!user && $route.name !== 'Signup'">Sign up</router-link>
     <router-link class="nav-button" to="/login" v-if="!user && $route.name !== 'Login'">Log in</router-link>
     <div class="greeting" v-if="user">
-      <p>Hi there, {{ user.displayName }} </p>
+      <p>Hi, {{ user.displayName }} </p>
     </div>
     <button class="nav-button" v-if="user" @click="logOut">Log out</button>
   </div>

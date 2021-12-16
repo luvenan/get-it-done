@@ -1,9 +1,10 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
+import { apikey } from './apikey'
 
 const firebaseConfig = {
-    apiKey:apikey,
+    apiKey: apikey,
     authDomain: "get-it-done-fb970.firebaseapp.com",
     projectId: "get-it-done-fb970",
     storageBucket: "get-it-done-fb970.appspot.com",
