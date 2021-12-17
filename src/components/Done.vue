@@ -1,14 +1,14 @@
 <template>
   <div class="container2">
       <h2>Done</h2>
-      <div class="container-tasks done" v-for="task in tasks" :key="task.id" >
+      <div class="container-tasks done" v-for="(task, index) in tasks" :key="task.id" >
         <div v-if="!task.isEditing">
              <button class="icons" @click="handleMove(task, task.collection)"><Icon icon="ic:round-done" /></button>
             {{task.title}}
         </div>
 
-        <form class="task-form" @submit.prevent="handleEdit(task)" v-if="task.isEditing">
-            <input class="newtask-input" type="text" :placeholder="task.title" v-model="editedTask">
+        <form class="task-form" @submit.prevent="handleEdit(task, index)" v-if="task.isEditing">
+            <input class="newtask-input" type="text" :placeholder="task.title" v-model="editedTask[index]">
             <button class="icons" id="edit-task"><Icon icon="mdi:pencil-outline" /></button>    
         </form>
 
@@ -56,17 +56,16 @@ export default {
             addTask(task, targetCol)
         }
 
-        const editedTask = ref('')
+        const editedTask = ref([])
 
-        const handleEdit = async (task) => {
-            if(editedTask.value) {
+        const handleEdit = async (task, index) => {
+            if(editedTask.value[index]) {
                 const docRef = doc(db, col, task.id )
                 await updateDoc(docRef, {
-                    title: editedTask.value
+                    title: editedTask.value[index]
                 })    
             }
             task.isEditing = false
-            editedTask.value = ''
         }
 
         return { tasks, handleDelete, handleMove, handleEdit, editedTask}
