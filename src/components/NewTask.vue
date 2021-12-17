@@ -1,6 +1,6 @@
 <template>
-  <div class="container-newtask">
-    <form @submit.prevent="handleSubmit">
+  <div class="container-tasks">
+    <form class="task-form" @submit.prevent="handleSubmit">
         <input class="newtask-input" type="text" placeholder="Add a new task..." v-model="newTask" required>
         <button class="icons" id="add-task"><Icon icon="ic:round-plus" /></button>    
     </form>
@@ -47,15 +47,5 @@ export default {
 </script>
 
 <style scoped>
-.container-newtask {
-    display: flex;
-    justify-content: space-between;
-}
 
-
-
-#add-task{
-    scale: 140%;
-    line-height: 25px;
-}
 </style>

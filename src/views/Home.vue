@@ -19,8 +19,16 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
+@media (min-width: 800px) {
+    .home1 {
+        flex-direction: row;
+    }
 
+    .container1 {
+        width: 49%;
+    }
+}
 
 </style>

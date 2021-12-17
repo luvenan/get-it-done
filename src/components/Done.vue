@@ -7,12 +7,10 @@
             {{task.title}}
         </div>
 
-        <div v-if="task.isEditing">
-            <form @submit.prevent="handleEdit(task)">
-                <input class="newtask-input" type="text" :placeholder="task.title" v-model="editedTask">
-                <button class="icons" id="edit-task"><Icon icon="mdi:pencil-outline" /></button>    
-            </form>
-        </div>
+        <form class="task-form" @submit.prevent="handleEdit(task)" v-if="task.isEditing">
+            <input class="newtask-input" type="text" :placeholder="task.title" v-model="editedTask">
+            <button class="icons" id="edit-task"><Icon icon="mdi:pencil-outline" /></button>    
+        </form>
 
         <div class="container-buttons" v-if="!task.isEditing">
             <button class="icons" @click="task.isEditing=!taskisEditing"><Icon icon="mdi:pencil-outline" /></button>
@@ -80,8 +78,4 @@ button {
     opacity: 0.5;
 }
 
-input {
-    width: 900px;
-    margin-right: 5px;
-}
 </style>

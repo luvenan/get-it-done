@@ -3,13 +3,13 @@
         <form @submit.prevent="handleSubmit">
             <h2>Sign up</h2>
             <div class="container-tasks">
-                <input type="text" placeholder="Display name" v-model="displayName">
+                <input class="login-input" type="text" placeholder="Display name" v-model="displayName">
             </div>
             <div class="container-tasks">
-                <input type="email" placeholder="Email" v-model="email">
+                <input class="login-input" type="email" placeholder="Email" v-model="email">
             </div>
             <div class="container-tasks">
-                <input type="password" placeholder="Password" v-model="password">
+                <input class="login-input" type="password" placeholder="Password" v-model="password">
             </div>       
             
             <button class="submit-button" v-if="!isPending">Sign up</button>
@@ -53,21 +53,15 @@ export default {
 </script>
 
 <style scoped>
-input {
-    width: 400px;
-    font-size: 16px;
-    border: none;
-    margin: auto;
-}
-
 .container1 {
     margin: auto;
-    margin-top: 100px;
-    padding: 50px 0;
+    margin-top: 6.25rem;
+    padding: 3rem 0;
+    max-width: 30rem;
 }
 
 .container-tasks {
-    margin-bottom: 30px;
-    margin-top: 30px;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 </style>

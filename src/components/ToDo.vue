@@ -1,23 +1,18 @@
 <template>
   <div class="container1">
      <h2>To do</h2>
-     <div class="container-tasks">
-         <NewTask v-bind:c="col"/>
-     </div>
+    <NewTask v-bind:c="col"/>
      <div class="container-tasks" v-for="task in tasks" :key="task.id">
-        <div class="container-check-task">
-            <div v-if="!task.isEditing">
-                <button class="icons" @click="handleMove(task, 'Done')"><Icon icon="ic:round-done" /></button>
-                {{task.title}}
-            </div>
-
-            <div v-if="task.isEditing">
-                <form @submit.prevent="handleEdit(task)">
-                    <input class="newtask-input" type="text" :placeholder="task.title" v-model="editedTask">
-                    <button class="icons" id="edit-task"><Icon icon="mdi:pencil-outline" /></button>    
-                </form>
-            </div>
+        <div v-if="!task.isEditing">
+            <button class="icons" @click="handleMove(task, 'Done')"><Icon icon="ic:round-done" /></button>
+            {{task.title}}
         </div>
+
+        <form class="task-form" @submit.prevent="handleEdit(task)" v-if="task.isEditing">
+            <input class="newtask-input" type="text" :placeholder="task.title" v-model="editedTask">
+            <button class="icons" id="edit-task"><Icon icon="mdi:pencil-outline" /></button>    
+        </form>
+    
         <div class="container-buttons" v-if="!task.isEditing">
             <button class="icons" @click="task.isEditing=!taskisEditing"><Icon icon="mdi:pencil-outline" /></button>
             <button class="icons" @click="handleMove(task, 'Standby')"><Icon icon="ic:outline-watch-later" /></button>
@@ -46,6 +41,7 @@ export default {
     setup(){
         const col ="ToDo"
         const { user } = getUser()
+        
         const { documents: tasks } = getCollection(
             col,
             ['userUid', '==', user.value.uid ]

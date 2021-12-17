@@ -37,24 +37,24 @@ export default {
 .navContainer {
     display: flex;
     justify-content: right;
-    margin-top: 30px;
-    margin-bottom: 15px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
 }
 
 .nav-button {
-  margin-left: 30px;
-  padding: 10px 12px;
+  margin-left: 2rem;
+  padding: 0.625rem 0.75rem;
   background: var(--task-box);
-  border-radius: 5px;
-  font-size: 16px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  box-shadow: 0 0.125rem 0.125rem rgba(0, 0, 0, 0.25);
   color: var(--task-text);
   text-decoration: none;
   border: none;
 }
 
 .greeting {
-  padding: 10px 10px;
+  padding: 0.625rem 0.625rem;
   color: var(--task-text);
 }
 </style>
