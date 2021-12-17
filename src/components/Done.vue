@@ -66,6 +66,7 @@ export default {
                 })    
             }
             task.isEditing = false
+            editedTask.value = ''
         }
 
         return { tasks, handleDelete, handleMove, handleEdit, editedTask}
