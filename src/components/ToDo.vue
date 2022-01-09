@@ -9,12 +9,12 @@
         </div>
 
         <form class="task-form" @submit.prevent="handleEdit(task, index)" v-if="task.isEditing">
-            <input class="newtask-input" type="text" :placeholder="task.title" v-model="editedTask[index]">
+            <input class="newtask-input" type="text" v-model="editedTask[index]">
             <button class="icons" id="edit-task"><Icon icon="mdi:pencil-outline" /></button>    
         </form>
     
         <div class="container-buttons" v-if="!task.isEditing">
-            <button class="icons" @click="task.isEditing=!taskisEditing"><Icon icon="mdi:pencil-outline" /></button>
+            <button class="icons" @click="beginEdit(task, index)"><Icon icon="mdi:pencil-outline" /></button>
             <button class="icons" @click="handleMove(task, 'Standby')"><Icon icon="ic:outline-watch-later" /></button>
             <button class="icons" @click="handleDelete(task)"><Icon icon="mdi:trash-can-outline" /></button>   
         </div>
@@ -58,17 +58,21 @@ export default {
 
         const editedTask = ref([])
 
+         const beginEdit = (task, index) =>
+        { 
+            task.isEditing = true
+            editedTask.value[index] = task.title
+        }
+
         const handleEdit = async (task, index) => {
-            if(editedTask.value[index]) {
                 const docRef = doc(db, col, task.id )
                 await updateDoc(docRef, {
                     title: editedTask.value[index]
                 })    
-            }
             task.isEditing = false
         }
 
-        return { tasks, col, handleDelete, handleMove, handleEdit, editedTask }
+        return { tasks, col, handleDelete, handleMove, handleEdit, editedTask, beginEdit }
     }
 }
 </script>

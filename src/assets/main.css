@@ -3,11 +3,11 @@
 
 /* 1 - variables*/
 :root {
-    --background: #DEE0E1;
+    --background: #e3E0d9;
     --containers: #F3F3F3;
-    --task-box: #cfd7da;
-    --task-text: #515151;
-    --title: #1E1E1E;
+    --task-box: #dbd0bd;
+    --task-text: #483A30;
+    --title: #271b12;
 }
 
 * {
@@ -71,6 +71,11 @@ body {
     color:rgba(81, 81, 81, 0.5);
 }
 
+.container-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: 3px;
+}
 
 /* 3 - Texts */
 h2 {
@@ -86,6 +91,12 @@ h2 {
     font-size: 0.9rem;
     text-align: center;
     color: crimson;
+}
+
+.login-signup {
+    text-align: center;
+    margin-top: 30px;
+    display: block;
 }
 
 /* 4 - Buttons and forms */

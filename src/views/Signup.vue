@@ -16,6 +16,7 @@
             <button class="submit-button" v-if="isPending">Loading</button>
             <div class="error" v-if="error">{{ error }}</div>
             
+            <router-link class="login-signup" to="/login">Already signed up? Log in here!</router-link>
         </form>
     </div>
     

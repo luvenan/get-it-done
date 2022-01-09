@@ -1,7 +1,7 @@
 <template>
   <div class="navContainer">
-    <router-link class="nav-button" to="/signup" v-if="!user && $route.name !== 'Signup'">Sign up</router-link>
-    <router-link class="nav-button" to="/login" v-if="!user && $route.name !== 'Login'">Log in</router-link>
+    <!-- <router-link class="nav-button" to="/signup" v-if="!user && $route.name !== 'Signup'">Sign up</router-link>
+    <router-link class="nav-button" to="/login" v-if="!user && $route.name !== 'Login'">Log in</router-link> -->
     <div class="greeting" v-if="user">
       <p>Hi, {{ user.displayName }} </p>
     </div>
