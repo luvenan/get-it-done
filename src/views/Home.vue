@@ -1,11 +1,15 @@
 <template>
-  <div class="home1">
-    <ToDo />
-    <Standby />
+  <div class="container-grid">
+    <div class="home1">
+      <ToDo />
+      <Standby />
+    </div>
+    <div class="home2">
+      <Done />
+    </div>
   </div>
-  <div class="home2">
-    <Done />
-  </div>
+  <div class="container-footer"></div>
+  
 </template>
 
 <script>
